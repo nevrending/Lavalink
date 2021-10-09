@@ -15,7 +15,10 @@ USER lavalink
 
 WORKDIR /opt/Lavalink
 
-RUN wget https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
+## stable
+# RUN wget https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
+## dev
+RUN wget https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar?branch=refs%2Fheads%2Fdev -O Lavalink.jar
 
 COPY application.yml application.yml
 
