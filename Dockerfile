@@ -17,5 +17,6 @@ WORKDIR /opt/Lavalink
 
 RUN wget https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
 
-ENTRYPOINT java -Djdk.tls.client.protocols=TLSv1.2,TLSv1.3 -Xmx${HEAP} -jar Lavalink.jar
+COPY application.yml application.yml
 
+ENTRYPOINT java -Djdk.tls.client.protocols=TLSv1.2,TLSv1.3 -Xmx${HEAP} -jar Lavalink.jar
