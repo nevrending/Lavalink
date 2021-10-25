@@ -1,4 +1,7 @@
-FROM azul/zulu-openjdk:16
+FROM azul/zulu-openjdk:17
+
+LABEL maintainer="Yefta Sutanto <yeftasutanto@gmail.com>"
+LABEL org.opencontainers.image.source=https://github.com/nevrending/Lavalink
 
 ARG HEAP=2G
 ENV HEAP=$HEAP
