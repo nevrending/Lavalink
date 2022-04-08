@@ -10,7 +10,6 @@ lavalink:
       soundcloud: true
       twitch: true
       vimeo: true
-      mixer: false
       http: false
       local: false
     bufferDurationMs: 400  # The duration of the NAS buffer. Higher values fare better against longer GC pauses
@@ -26,6 +25,14 @@ lavalink:
     #   strategy: "RotateOnBan"  # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
     #   searchTriggersFail: true  # Whether a search 429 should trigger marking the ip as failing
     #   retryLimit: -1  # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
+    # youtubeConfig:  # Required for avoiding age restrictions by YouTube. Guide https://github.com/Walkyst/lavaplayer-fork/issues/18
+    #   PAPISID: ""
+    #   PSID: ""
+    # httpConfig:  # Useful for blocking bad-actors from ip-grabbing your music node and attacking it, this way only the http proxy will be attacked
+    #   proxyHost: "localhost"  # Hostname of the proxy, (ip or domain)
+    #   proxyPort: 3128  # Proxy port, 3128 is the default for squidProxy
+    #   proxyUser: ""  # Optional user for basic authentication fields, leave blank if you don't use basic auth
+    #   proxyPassword: ""  # Password for basic authentication
 
 metrics:
   prometheus:
