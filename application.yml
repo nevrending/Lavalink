@@ -51,14 +51,16 @@ sentry:
 #    another_key: another_value
 
 logging:
-  file:
-    max-history: 30
-    max-size: 50MB
   path: ./logs/
 
   level:
     root: INFO
     lavalink: INFO
+
+  logback:
+    rollingpolicy:
+      max-file-size: 50MB
+      max-history: 30
 
 # plugins:
 #   topissourcemanagers:
