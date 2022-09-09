@@ -24,7 +24,7 @@ WORKDIR /opt/Lavalink
 # RUN axel https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
 ## dev
 # RUN axel https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar?branch=refs%2Fheads%2Fdev -o Lavalink.jar
-RUN axel -o Lavalink.jar https://github.com/freyacodes/Lavalink/releases/download/3.5-rc4/Lavalink.jar
+RUN axel -o Lavalink.jar https://github.com/freyacodes/Lavalink/releases/download/3.5/Lavalink.jar
 
 COPY application.yml application.yml
 
