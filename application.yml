@@ -14,7 +14,10 @@ lavalink:
       local: false
     bufferDurationMs: 400  # The duration of the NAS buffer. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses.
     frameBufferDurationMs: 5000  # How many milliseconds of audio to keep buffered
+    opusEncodingQuality: 10  # Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU.
+    resamplingQuality: LOW  # Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU.
     trackStuckThresholdMs: 10000   # The threshold for how long a track can be stuck. A track is stuck if does not return any audio data.
+    useSeekGhosting: true  # Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready.
     youtubePlaylistLoadLimit: 6  # Number of pages at 100 each
     playerUpdateInterval: 5  # How frequently to send player updates to clients, in seconds
     youtubeSearchEnabled: true
@@ -35,7 +38,7 @@ lavalink:
     #   proxyUser: ""  # Optional user for basic authentication fields, leave blank if you don't use basic auth
     #   proxyPassword: ""  # Password for basic authentication
   # plugins:
-  #   - dependency: "com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:v2.0.7" # replace vx.x.x with the latest release tag!
+  #   - dependency: "com.github.TopiSenpai.LavaSrc:lavasrc-plugin:3.0.5"
   #     repository: "https://jitpack.io"
 
 metrics:
@@ -51,7 +54,8 @@ sentry:
 #    another_key: another_value
 
 logging:
-  path: ./logs/
+  file:
+    path: ./logs/
 
   level:
     root: INFO
@@ -63,17 +67,21 @@ logging:
       max-history: 30
 
 # plugins:
-#   topissourcemanagers:
+#   lavasrc:
 #     providers: # Custom providers for track loading. This is the default
 #       - "ytsearch:\"%ISRC%\"" # Will be ignored if track does not have an ISRC. See https://en.wikipedia.org/wiki/International_Standard_Recording_Code
 #       - "ytsearch:%QUERY%" # Will be used if track has no ISRC or no track could be found for the ISRC
+#     # - "dzisrc:%ISRC%" # Deezer ISRC provider
 #     # - "scsearch:%QUERY%" you can add multiple other fallback sources here
 #     sources:
 #       spotify: true # Enable Spotify source
 #       applemusic: true # Enable Apple Music source
+#       deezer: true # Enable Deezer source
 #     spotify:
-#       clientId: ""
-#       clientSecret: ""
+#       clientId: "your client id"
+#       clientSecret: "your client secret"
 #       countryCode: "AU" # the country code you want to use for filtering the artists top tracks. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #     applemusic:
-#       countryCode: "AU" # the country code you want to use for filtering the artists top tracks and language. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-1
+#       countryCode: "AU" # the country code you want to use for filtering the artists top tracks and language. See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+#     deezer:
+#       masterDecryptionKey: "your master decryption key" # the master key used for decrypting the deezer tracks. (yes this is not here you need to get it from somewhere else)
