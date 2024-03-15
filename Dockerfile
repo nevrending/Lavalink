@@ -3,7 +3,7 @@ FROM azul/zulu-openjdk:21
 LABEL maintainer="Yefta Sutanto <yeftasutanto@gmail.com>"
 LABEL org.opencontainers.image.source=https://github.com/nevrending/Lavalink
 
-ARG VERSION=3.7.9
+ARG VERSION=3.7.11
 ARG HEAP=2G
 ENV HEAP=$HEAP
 
