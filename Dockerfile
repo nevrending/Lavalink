@@ -3,7 +3,7 @@ FROM azul/zulu-openjdk:21
 LABEL maintainer="Yefta Sutanto <yeftasutanto@gmail.com>"
 LABEL org.opencontainers.image.source=https://github.com/nevrending/Lavalink
 
-ARG VERSION=3.7.11
+ARG VERSION=b0db58a0
 ARG HEAP=2G
 ENV HEAP=$HEAP
 
@@ -25,7 +25,9 @@ WORKDIR /opt/Lavalink
 # RUN axel https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
 ## dev
 # RUN axel https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar?branch=refs%2Fheads%2Fdev -o Lavalink.jar
-RUN axel -o Lavalink.jar https://github.com/freyacodes/Lavalink/releases/download/${VERSION}/Lavalink.jar
+# RUN axel -o Lavalink.jar https://github.com/freyacodes/Lavalink/releases/download/${VERSION}/Lavalink.jar
+# hotfix 31 Mar 2024
+RUN axel -o Lavalink.jar https://repo.lavalink.dev/artifacts/lavalink/b0db58a0/Lavalink.jar
 
 COPY application.yml application.yml
 
