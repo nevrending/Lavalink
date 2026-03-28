@@ -1,9 +1,9 @@
-FROM azul/zulu-openjdk:21
+FROM azul/zulu-openjdk:21-jre-headless
 
 LABEL maintainer="Yefta Sutanto <yeftasutanto@gmail.com>"
 LABEL org.opencontainers.image.source=https://github.com/nevrending/Lavalink
 
-ARG VERSION=3.7.13
+ARG VERSION=4.2.2
 ARG HEAP=2G
 ENV HEAP=$HEAP
 
@@ -22,11 +22,11 @@ USER lavalink
 WORKDIR /opt/Lavalink
 
 ## stable
-# RUN axel https://github.com/freyacodes/Lavalink/releases/latest/download/Lavalink.jar
+RUN axel -o Lavalink.jar https://github.com/lavalink-devs/Lavalink/releases/download/${VERSION}/Lavalink.jar
 ## dev
 # RUN axel https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar?branch=refs%2Fheads%2Fdev -o Lavalink.jar
-RUN axel -o Lavalink.jar https://github.com/freyacodes/Lavalink/releases/download/${VERSION}/Lavalink.jar
 
 COPY application.yml application.yml
 
+SHELL ["/bin/bash", "-c"]
 ENTRYPOINT java -Djdk.tls.client.protocols=TLSv1.2,TLSv1.3 -Xmx${HEAP} -jar Lavalink.jar
